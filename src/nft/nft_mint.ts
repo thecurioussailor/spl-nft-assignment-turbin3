@@ -25,6 +25,14 @@ umi.use(mplCore());
             asset,
             name: "Itachi Uchiha",
             uri: metadataUri,
+            plugins: [
+                {
+                    type: "Royalties",
+                    basisPoints: 500,  // 5%
+                    creators: [{ address: signer.publicKey, percentage: 100 }],
+                    ruleSet: { __kind: "None" }
+                }
+            ]
         }).sendAndConfirm(umi);
 
         const signature = base58.deserialize(tx.signature)[0];
